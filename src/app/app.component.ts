@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'httpInterceptor';
+  constructor(private http: HttpClient) {}
+  public title: string = 'httpInterceptor'
+  public GETRequest(): void {
+    this.http.get("https://jsonplaceholder.typicode.com/users").subscribe(res => {
+        console.log(res)
+      }
+    )
+  }
 }
